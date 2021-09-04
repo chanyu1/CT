@@ -2,69 +2,33 @@
 
 // let fs = require("fs");
 // let input = fs.readFileSync("/dev/stdin").toString().split("\n");
-let input = [
-  "10 13",
-  "BBBBBBBBWBWBW",
-  "BBBBBBBBBWBWB",
-  "BBBBBBBBWBWBW",
-  "BBBBBBBBBWBWB",
-  "BBBBBBBBWBWBW",
-  "BBBBBBBBBWBWB",
-  "BBBBBBBBWBWBW",
-  "BBBBBBBBBWBWB",
-  "WWWWWWWWWWBWB",
-  "WWWWWWWWWWBWB",
-];
+let input = ["2"];
 
-let MN = input.shift();
-input = input.map((str) => str.split(""));
+let N = parseInt(input[0]);
+let num = 666;
+let count = 0;
 
-let N = Number(MN.split(" ")[0]);
-let M = Number(MN.split(" ")[1]);
-let result = [];
-
-// 세로
-for (let i = 0; i <= N - 8; i++) {
-  // 가로
-  for (let j = 0; j <= M - 8; j++) {
-    let count1 = 0;
-    let count2 = 0;
-    let k = 0;
-
-    for (let q = i; q < i + 8; q++) {
-      for (let p = j; p < j + 8; p += 2) {
-        if (k % 2 === 0) {
-          if (input[q][p] === "B") {
-            count1++;
-          }
-          if (input[q][p + 1] === "W") {
-            count1++;
-          }
-          if (input[q][p] === "W") {
-            count2++;
-          }
-          if (input[q][p + 1] === "B") {
-            count2++;
-          }
-        } else if (k % 2 === 1) {
-          if (input[q][p] === "W") {
-            count1++;
-          }
-          if (input[q][p + 1] === "B") {
-            count1++;
-          }
-          if (input[q][p] === "B") {
-            count2++;
-          }
-          if (input[q][p + 1] === "W") {
-            count2++;
-          }
-        }
-      }
-      k++;
-    }
-    result.push(Math.min(count1, count2));
+while (true) {
+  if (String(num).indexOf("666") != -1) {
+    count++;
+    N--;
   }
+
+  if (N === 0) {
+    break;
+  }
+
+  num++;
 }
 
-console.log(Math.min.apply(null, result));
+console.log(num);
+
+// 666 1666 2666 3666 4666 5666
+// 6660 6661 6662 6663 6664 6665
+// 6666 6667 6668 6669 7666 8666 9666
+
+// 10666 11666 12666 13666 14666 15666
+// 16660 16661 16662 16663 16664 16665
+// 16666 16667 16668 16669 17666 18666 19666
+
+// 20666
