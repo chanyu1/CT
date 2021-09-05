@@ -2,7 +2,7 @@
 
 // let fs = require("fs");
 // let input = fs.readFileSync("/dev/stdin").toString().split("\n");
-let input = ["6", "1", "3", "-2", "-2", "-3", "-3"];
+let input = ["5", "-1", "-2", "-3", "-1", "-2"];
 
 let N = parseInt(input.shift());
 input = input.map((str) => parseInt(str));
@@ -31,35 +31,32 @@ if (sortArr.length % 2 === 1) {
 }
 
 // freq
-let obj = {};
+const sortedNumArr = input.sort((a, b) => a - b);
+const numMap = {};
 
-for (let num of input) {
-  if (obj[num]) {
-    obj[num]++;
+for (let num of sortedNumArr) {
+  if (numMap[num]) {
+    numMap[num] = numMap[num] + 1;
   } else {
-    obj[num] = 1;
+    numMap[num] = 1;
   }
 }
 
-let keys = Object.keys(obj);
-let max = obj[keys[0]];
+let hitMaxNum = Math.max.apply(null, Object.values(numMap));
+let hitMaxNumArr = [];
 
-for (let i = 1; i < keys.length; i++) {
-  let value = obj[keys[i]];
-  if (value > max) {
-    max = value;
+for (let numKey in numMap) {
+  if (numMap[numKey] === hitMaxNum) {
+    hitMaxNumArr.push(numKey);
   }
 }
 
-let maxArr = [];
-
-for (let j = 0; j < keys.length; j++) {
-  if (obj[keys[j]] === obj[keys[max]]) {
-    maxArr.push(obj[keys[j]]);
-  }
+if (hitMaxNumArr.length > 1) {
+  hitMaxNumArr = hitMaxNumArr.sort((a, b) => a - b);
+  freq = Number(hitMaxNumArr[1]);
+} else {
+  freq = Number(hitMaxNumArr[0]);
 }
-// console.log(obj);
-console.log(maxArr);
 
 //range
 range = Math.max(...input) - Math.min(...input);
