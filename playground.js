@@ -1,10 +1,15 @@
-function User(name, age) {
-  this.name = name;
-  this.age = age;
-  this.sayName = function () {
-    console.log(this.name);
-  };
-}
+const user = {
+  name: "mike",
+  age: 30,
+};
 
-let user5 = new User("Han", 40);
-user5.sayName();
+const showName = Symbol("show name");
+user[showName] = function () {
+  console.log(this.name);
+};
+
+user[showName]();
+
+for (let key in user) {
+  console.log(key, user[key]);
+}
