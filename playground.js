@@ -1,15 +1,7 @@
-const user = {
-  name: "mike",
-  age: 30,
-};
+let arr = ["a", "b", "c"];
 
-const showName = Symbol("show name");
-user[showName] = function () {
-  console.log(this.name);
-};
+let result = arr.find((user) => {
+  return user === "a";
+});
 
-user[showName]();
-
-for (let key in user) {
-  console.log(key, user[key]);
-}
+console.log(result);
