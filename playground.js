@@ -1,7 +1,19 @@
-let arr = ["a", "b", "c"];
+const mike = {
+  name: "Mike",
+};
 
-let result = arr.find((user) => {
-  return user === "a";
-});
+const tom = {
+  name: "Tom",
+};
 
-console.log(result);
+function showThisName() {
+  console.log(this.name);
+}
+
+function update(birthYear, occupation) {
+  this.birthYear = birthYear;
+  this.occupation = occupation;
+}
+
+update.apply(mike, [1999, "singer"]);
+console.log(mike);
