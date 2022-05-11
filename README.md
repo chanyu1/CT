@@ -1,1 +1,1 @@
-# Coding Test
+# JavaScript Coding Test
