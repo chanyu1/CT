@@ -24,3 +24,4 @@ for (let k = 1; k < tmp.length; k++) {
 }
 
 console.log(result);
+console.log(result);
