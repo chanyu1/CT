@@ -1,1 +1,1 @@
-# JavaScript Coding Test
+# CT-javascript
